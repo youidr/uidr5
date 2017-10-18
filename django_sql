@@ -61,3 +61,12 @@ end_date = datetime.date(e_yea,e_mon,e_day)
 #格式化 日期
 f_s_date = Serverslog.objects.filter(s_date__range=(start_date,end_date))
 #执行日期查询
+
+f_sum = Serverslog.objects.filter(s_date__range=(start_date,end_date)).values('calltimes')
+count = len(f_s_date)
+c = 0
+for i in f_sum:
+    c  += i.get('calltimes',0)
+print ('通话时长为：',c,'分钟')
+print ('通话记录为：',count,'条')
+
