@@ -48,3 +48,16 @@ models.DjangoInfo.objects.all()[1:3]
 
 # 获取id，以及外键关联的表中的name数据
 models.DjangoInfo.objects.all().values("id","b__name")
+
+import datetime #导入日期时间模块
+s_yea = 2017
+s_mon = 9
+s_day = 1
+e_yea = 2017
+e_mon = 9
+e_day = 1
+start_date = datetime.date(s_yea,s_mon,s_day)
+end_date = datetime.date(e_yea,e_mon,e_day)
+#格式化 日期
+f_s_date = Serverslog.objects.filter(s_date__range=(start_date,end_date))
+#执行日期查询
