@@ -38,6 +38,8 @@ models.DjangoInfo.objects.filter(name__icontains="o")
 models.DjangoInfo.objects.filter(id__range=[3,5])
 
 # 获取所有数据，以id升序排列
+
+c = f_sum.values('s_date').distinct() #删除重复
 models.DjangoInfo.objects.all().order_by("id")
 
 # 获取所有数据，以id降序排列
@@ -67,4 +69,4 @@ count = f_s_date = Serverslog.objects.filter(s_date__range=(start_date,end_date)
 c = sum(i.get('calltimes',0) for i in f_sum)
 print ('通话时长为：',c,'分钟')
 print ('通话记录为：',count,'条')
-
+c = f_sum.values('s_date').distinct() #删除重复
