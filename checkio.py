@@ -37,12 +37,22 @@ def checkio1(text):
     text1 = text1.replace('0','').replace('1','').replace('2','').replace('3','').replace('4','').replace('5','')
     text1 = text1.replace('6', '').replace('7', '').replace('8', '').replace('9', '').replace(',', '').replace('.', '')
     x = {i:text1.count(i) for i in set(text1)}
-    a = sorted(x.items(),key=lambda y: y[0],reverse=False)
-    b = max(y for y in x.values())
-    for c in a:
-        if b in c:
-            break
-    return c[0]
+    #a = sorted(x.items(),key=lambda y: y[0],reverse=False)  #代码1
+    a = sorted(list(x.items()))   #代码2
+    
+    #代码1
+    # b = max(y for y in x.values())
+    # for c in a:
+    #     if b in c:
+    #         break
+    # return c[0]
+    
+    #代码2
+    v,n = '',0
+    for i in a:
+        if i[1] > n:
+            v,n = i[0],i[1]
+    return v
 
 def checkio2(data):
     #检查并删除列表中只出现一次的元素又不改变列表的排序
